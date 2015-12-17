@@ -47,11 +47,8 @@ function Thread(threadPool, script){
     function dummyCallback(event) {
         var task = _this.threadPool.getTask();
 
-        if (task != null) {
-            console.log("before dummyCallback");
+        if (task != null) 
             task.callback(task.startMessage);
-            console.log("after dummyCallback");
-        }
 
         setTimeout(dummyCallback, 1, null);
     }
