@@ -3,9 +3,13 @@
  */
 
 
+
 self.onmessage = function(event) {
-    self.postMessage(event.data);
-    self.close();
+    self.postMessage(null);
+    setTimeout("self.callback()", 1, event);
 };
 
-
+self.callback = function()
+{
+    self.onmessage(null);
+};

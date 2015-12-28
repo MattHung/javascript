@@ -42,15 +42,16 @@ function Thread(threadPool, script){
         _this.worker = new Worker(script);
         _this.worker.addEventListener('message', dummyCallback, false);
         _this.worker.postMessage(null);
-    }
+    };
 
     function dummyCallback(event) {
         var task = _this.threadPool.getTask();
 
-        if (task != null) 
+        if (task != null) {
+            console.log("before dummyCallback");
             task.callback(task.startMessage);
-
-        setTimeout(dummyCallback, 1, null);
+            console.log("after dummyCallback");
+        }
     }
 }
 
